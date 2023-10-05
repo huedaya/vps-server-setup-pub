@@ -6,7 +6,7 @@
 ```
 mkdir -p /home/server/system
 cd /home/server/system
-git clone git@github.com:huedaya/vps-server-setup-pub.git
+git clone https://github.com/huedaya/vps-server-setup-pub.git
 cd vps-server-setup
 cp .env.example .env
 ```
