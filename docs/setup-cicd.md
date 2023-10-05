@@ -21,6 +21,7 @@ nano ~/.ssh/authorized_keys
 Then take a note the key and password
 
 ### 2. Put private key to GITHUB Secret 
+Go to this menu https://github.com/<your_github_username>/<your_project_name>/settings/secrets/actions, and put this key:
 - SSH_HOST : your server public ip 
 - SSH_USERNAME: you server username (`deploy`)
 - SSH_PRIVATE_KEY : your ssh private key on your server `cat ~/.ssh/id_rsa_deploy` (previously generated on local machine)
