@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  traefik:
+    image: traefik:v2.5.6
+    container_name: traefik
+    restart: always
+    security_opt:
+      - no-new-privileges:true
+    command:
+      - --log.level=${LOG_LEVEL}
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik-data/traefik.yml:/traefik.yml:ro
+      - ./traefik-data/acme.json:/acme.json
+      # Add folder with dynamic configuration yml
+      - ./traefik-data/config:/config
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.traefik-secure.entrypoints=websecure"
+      - "traefik.http.routers.traefik-secure.rule=Host(`traefik.${HOST}`)"
+      - "traefik.http.routers.traefik-secure.service=api@internal"
+      - "traefik.http.middlewares.traefik-auth.basicauth.users=admin:$$2y$$05$$yMekv/RzJIB4t772xYeTm.gvs6tX7FeIOzHYD6RuyJv8USNuWEM3K" # admin:admin https://doc.traefik.io/traefik/middlewares/http/basicauth/
+      - "traefik.http.routers.traefik-secure.middlewares=traefik-auth"
+
+networks:
+  proxy:
+    external: true
