@@ -9,7 +9,7 @@ sudo adduser deploy
 ```
 Then on local computer generate a key 
 ```
-echo -e 'y\n' | ssh-keygen -m PEM -t rsa -b 4096 -C "for-gh-deploy" -f ~/.ssh/id_rsa_deploy -P "
+echo -e 'y\n' | ssh-keygen -m PEM -t rsa -b 4096 -C "for-gh-deploy" -f ~/.ssh/id_rsa_deploy -P ""
 
 # copy the pub key
 cat ~/.ssh/id_rsa_deploy.pub
