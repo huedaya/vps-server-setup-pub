@@ -13,7 +13,7 @@ cp .env.example .env
 
 ## Edit email address
 ```
-nano /traefik-data/traefik.yml
+nano /home/server/system/traefik-data/traefik.yml
 ```
 
 ## Edit the `.env`
