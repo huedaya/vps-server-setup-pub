@@ -11,6 +11,11 @@ cd vps-server-setup
 cp .env.example .env
 ```
 
+## Edit email address
+```
+nano /traefik-data/traefik.yml
+```
+
 ## Edit the `.env`
 Just adjust the domain name
 
